@@ -1,0 +1,14 @@
+---
+- hosts: magento.local
+  become: yes
+  become_method: sudo
+  become_user: root
+
+  roles:
+    - user
+    - docker
+    - docker_compose
+    - docker_nginx
+    - docker_mysql56
+    - docker_php73
+    - docker_redis60
