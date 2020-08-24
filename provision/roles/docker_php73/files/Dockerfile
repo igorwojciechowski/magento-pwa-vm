@@ -44,8 +44,10 @@ RUN echo "magento:magento" | chpasswd
 
 RUN sed -i 's/www-data/magento/g' /usr/local/etc/php-fpm.d/www.conf
 RUN sed -i 's/www-data/magento/g' /usr/local/etc/php-fpm.d/www.conf.default
-RUN sed -i 's/memory limit = 128M/memory limit = 4G/g' /usr/local/etc/php/php.ini-production
-RUN sed -i 's/memory limit = 128M/memory limit = 4G/g' /usr/local/etc/php/php.ini-development
+
+COPY ./usr/local/etc/php/php.ini /usr/local/etc/php/php.ini
+
+WORKDIR /var/www/magento23os
 
 EXPOSE 9000
 

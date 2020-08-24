@@ -31,8 +31,8 @@
     mode: 0550
 
 - name: Copy magento.conf
-  copy:
-    template: ./etc/nginx/sites-available/magento.conf.j2
+  template:
+    src: ./etc/nginx/sites-available/magento.conf.j2
     dest: /home/magento/docker/docker_nginx/etc/nginx/sites-available/magento.conf
     owner: magento
     group: docker

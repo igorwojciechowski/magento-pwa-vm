@@ -1,7 +1,7 @@
 - name: Add magento user
   user:
-    name: magento
+    name: "{{ user_name }}"
     password: "{{ 'magento' | password_hash('sha512') }}"
-    uid: 2222
+    uid: "{{ user_uid }}"
     shell: /bin/bash
     groups: sudo
