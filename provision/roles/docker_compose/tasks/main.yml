@@ -1,0 +1,14 @@
+- name: Install docker-compose
+  get_url:
+    url: https://github.com/docker/compose/releases/download/1.26.2/docker-compose-Linux-x86_64
+    dest: /usr/local/bin/docker-compose
+    group: docker
+    mode: 0770
+
+- name: Copy docker-compose.yml
+  template:
+    src: ./docker-compose.yml.j2
+    dest: /home/magento/docker/docker-compose.yml
+    owner: magento
+    group: docker
+    mode: 0550

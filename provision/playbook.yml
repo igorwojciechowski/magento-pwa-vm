@@ -1,8 +1,23 @@
 ---
-- hosts: magento.local
+- hosts: magento
   become: yes
   become_method: sudo
   become_user: root
+  vars:
+    ip: 192.168.33.10
+    user_name: magento
+    user_password: magento
+    user_uid: 2222
+    user_group: magento
+    group_gid: 2222
+    db_user: magento
+    db_password: magento
+    db_root_password: root
+    db_name: magento
+    backend_domain: magento.backend
+    frontend_domain: magento.front
+    backend_root_dir: /var/www/magento23os/
+
 
   roles:
     - user

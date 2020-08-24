@@ -1,0 +1,32 @@
+- name: Create docker_php73 directory
+  file:
+    path: /home/magento/docker/docker_php73
+    owner: magento
+    group: docker
+    mode: 0550
+    state: directory
+
+- name: Copy Dockerfile
+  template:
+    src: ./Dockerfile.j2
+    dest: /home/magento/docker/docker_php73/Dockerfile
+    owner: magento
+    group: docker
+    mode: 0550
+
+- name: Create supervisord directory
+  file:
+    path: /home/magento/docker/docker_php73/etc/supervisor/conf.d/
+    owner: magento
+    group: docker
+    mode: 0550
+    state: directory
+
+
+- name: Copy supervisord.conf
+  copy:
+    src: ./etc/supervisor/conf.d/supervisord.conf
+    dest: /home/magento/docker/docker_php73/etc/supervisor/conf.d/supervisord.conf
+    owner: magento
+    group: docker
+    mode: 0550

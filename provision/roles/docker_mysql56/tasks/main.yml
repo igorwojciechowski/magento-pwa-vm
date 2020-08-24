@@ -1,0 +1,15 @@
+- name: Create docker mysql directory
+  file:
+    path: /home/magento/docker/docker_mysql56
+    owner: magento
+    group: docker
+    mode: 0550
+    state: directory
+
+- name: Copy Dockerfile
+  copy:
+    src: ./Dockerfile
+    dest: /home/magento/docker/docker_mysql56/Dockerfile
+    owner: magento
+    group: docker
+    mode: 0550

@@ -1,0 +1,39 @@
+- name: Create docker_nginx directory
+  file:
+    path: /home/magento/docker/docker_nginx
+    owner: magento
+    group: docker
+    mode: 0550
+    state: directory
+
+- name: Copy Dockerfile
+  copy:
+    src: ./Dockerfile
+    dest: /home/magento/docker/docker_nginx/Dockerfile
+    owner: magento
+    group: docker
+    mode: 0550
+
+- name: Create sites-available
+  file:
+    path: /home/magento/docker/docker_nginx/etc/nginx/sites-available
+    owner: magento
+    group: docker
+    mode: 0550
+    state: directory
+
+- name: Copy nginx.conf
+  template:
+    src: ./etc/nginx/nginx.conf.j2
+    dest: /home/magento/docker/docker_nginx/etc/nginx/nginx.conf
+    owner: magento
+    group: docker
+    mode: 0550
+
+- name: Copy magento.conf
+  copy:
+    template: ./etc/nginx/sites-available/magento.conf.j2
+    dest: /home/magento/docker/docker_nginx/etc/nginx/sites-available/magento.conf
+    owner: magento
+    group: docker
+    mode: 0550

@@ -1,0 +1,15 @@
+- name: Create docker_redis60 directory
+  file:
+    path: /home/magento/docker/docker_redis60
+    owner: magento
+    group: docker
+    mode: 0550
+    state: directory
+
+- name: Copy Dockerfile
+  copy:
+    src: ./Dockerfile
+    dest: /home/magento/docker/docker_redis60/Dockerfile
+    owner: magento
+    group: docker
+    mode: 0550

@@ -1,0 +1,32 @@
+version: "3.8"
+services:
+  nginx:
+    build: "./docker_nginx/"
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - /var/log/nginx/:/var/log/nginx/
+      - {{ backend_root_dir }}:{{ backend_root_dir }}
+  php:
+    build: "./docker_php73/"
+    volumes:
+      - {{ backend_root_dir }}:{{ backend_root_dir }}
+    ports:
+      - 9000:9000
+    tty: yes
+  mysql:
+    build: "./docker_mysql56/"
+    environment:
+      - MYSQL_ROOT_PASSWORD={{ db_root_password }}
+      - MYSQL_USER={{ db_user }}
+      - MYSQL_PASSWORD={{ db_password }}
+      - MYSQL_DATABASE={{ db_name }}
+    volumes:
+      - /var/lib/mysql/data/:/var/lib/mysql/data/
+    ports:
+      - 3306:3306
+  redis:
+    build: "./docker_redis60/"
+    ports:
+      - 6379:6379
