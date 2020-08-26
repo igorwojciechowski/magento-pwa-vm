@@ -1,0 +1,15 @@
+- name: Create docker_node directory
+  file:
+    path: /home/magento/docker/docker_node
+    owner: magento
+    group: docker
+    mode: 0550
+    state: directory
+
+- name: Copy Dockerfile
+  copy:
+    src: ./Dockerfile
+    dest: /home/magento/docker/docker_node/Dockerfile
+    owner: magento
+    group: docker
+    mode: 0550

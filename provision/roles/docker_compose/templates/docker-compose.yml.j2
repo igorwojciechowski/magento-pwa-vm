@@ -14,6 +14,14 @@ services:
       - {{ backend_root_dir }}:{{ backend_root_dir }}
     ports:
       - 9000:9000
+  node:
+    build: "./docker_node"
+    ports:
+      - 3000:3000
+      - 10000:10000
+    volumes:
+      - {{ frontend_root_dir }}:{{ frontend_root_dir }}
+    stdin_open: true
     tty: yes
   mysql:
     build: "./docker_mysql56/"

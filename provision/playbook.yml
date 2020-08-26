@@ -17,6 +17,7 @@
     backend_domain: magento.backend
     frontend_domain: magento.front
     backend_root_dir: /var/www/magento23os/
+    frontend_root_dir: /var/www/storefront/
 
 
   roles:
@@ -27,3 +28,4 @@
     - docker_mysql56
     - docker_php73
     - docker_redis60
+    - docker_node
