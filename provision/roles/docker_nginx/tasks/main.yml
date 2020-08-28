@@ -37,3 +37,11 @@
     owner: magento
     group: docker
     mode: 0550
+
+- name: Copy storefront.conf
+  template:
+    src: ./etc/nginx/sites-available/storefront.conf.j2
+    dest: /home/magento/docker/docker_nginx/etc/nginx/sites-available/storefront.conf
+    owner: magento
+    group: docker
+    mode: 0550

@@ -22,10 +22,13 @@ RUN echo "{{ user_name }} ALL=(ALL) ALL" > /etc/sudoers.d/{{ user_name }}
 RUN chmod 0440 /etc/sudoers.d/{{ user_name }}
 RUN echo "Set disable_coredump false" >> /etc/sudo.conf
 
-RUN npm i -g graphql-cli
-RUN cd {{ frontend_root_dir }}
-RUN npm link graphql-cli
+RUN npm i -g graphql-cli \
+             pm2
 
 USER {{ user_name }}
 
 WORKDIR {{ frontend_root_dir }}
+
+EXPOSE 3000
+
+CMD [ "pm2-runtime", "start", "ecosystem.config.js" ]

@@ -6,8 +6,11 @@ RUN apk add bash \
 
 COPY ./etc/nginx/nginx.conf /etc/nginx/nginx.conf
 COPY ./etc/nginx/sites-available/magento.conf /etc/nginx/sites-available/magento.conf
+COPY ./etc/nginx/sites-available/storefront.conf /etc/nginx/sites-available/storefront.conf
+
 RUN mkdir /etc/nginx/sites-enabled/
 RUN ln -s /etc/nginx/sites-available/magento.conf /etc/nginx/sites-enabled/magento.conf
+RUN ln -s /etc/nginx/sites-available/storefront.conf /etc/nginx/sites-enabled/storefront.conf
 
 RUN addgroup --gid 2222 magento
 RUN adduser  magento --uid 2222  -G magento --disabled-password

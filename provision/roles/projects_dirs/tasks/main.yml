@@ -2,7 +2,7 @@
   file:
     path: "{{ backend_root_dir }}"
     owner: "{{ user_name }}"
-    group: "{{ group_name }}"
+    group: "{{ user_group }}"
     mode: 0770
     state: directory
 
@@ -10,6 +10,6 @@
   file:
     path: "{{ frontend_root_dir }}"
     owner: "{{ user_name }}"
-    group: "{{ group_name }}"
+    group: "{{ user_group }}"
     mode: 0770
     state: directory
