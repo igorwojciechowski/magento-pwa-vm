@@ -22,6 +22,7 @@
 
   roles:
     - user
+    - projects_dirs
     - docker
     - docker_compose
     - docker_nginx

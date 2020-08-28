@@ -21,6 +21,8 @@ services:
       - 10000:10000
     volumes:
       - {{ frontend_root_dir }}:{{ frontend_root_dir }}
+    extra_hosts:
+      - "{{ backend_domain }}:{{ ip }}"
     stdin_open: true
     tty: yes
   mysql:

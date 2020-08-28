@@ -7,8 +7,8 @@
     state: directory
 
 - name: Copy Dockerfile
-  copy:
-    src: ./Dockerfile
+  template:
+    src: ./Dockerfile.j2
     dest: /home/magento/docker/docker_node/Dockerfile
     owner: magento
     group: docker

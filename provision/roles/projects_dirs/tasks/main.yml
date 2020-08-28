@@ -1,0 +1,15 @@
+- name: Create magento directory
+  file:
+    path: "{{ backend_root_dir }}"
+    owner: "{{ user_name }}"
+    group: "{{ group_name }}"
+    mode: 0770
+    state: directory
+
+- name: Create storefront directory
+  file:
+    path: "{{ frontend_root_dir }}"
+    owner: "{{ user_name }}"
+    group: "{{ group_name }}"
+    mode: 0770
+    state: directory

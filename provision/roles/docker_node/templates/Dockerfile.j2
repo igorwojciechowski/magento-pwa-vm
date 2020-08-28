@@ -1,0 +1,31 @@
+FROM node:alpine3.11
+
+USER root
+
+RUN apk update
+RUN apk add bash \
+            python \
+            python3 \
+            curl \
+            openssl \
+            git \
+            build-base \
+            sudo
+
+
+RUN addgroup --gid {{ group_gid }} {{ user_group }}
+RUN adduser  {{ user_name }} --uid {{ user_uid }}  -G {{ user_group }} --disabled-password
+RUN echo "{{ user_name }}:{{ user_group }}" | chpasswd
+
+# --- Add user to sudoers
+RUN echo "{{ user_name }} ALL=(ALL) ALL" > /etc/sudoers.d/{{ user_name }}
+RUN chmod 0440 /etc/sudoers.d/{{ user_name }}
+RUN echo "Set disable_coredump false" >> /etc/sudo.conf
+
+RUN npm i -g graphql-cli
+RUN cd {{ frontend_root_dir }}
+RUN npm link graphql-cli
+
+USER {{ user_name }}
+
+WORKDIR {{ frontend_root_dir }}
