@@ -18,6 +18,12 @@
     frontend_domain: magento.front
     backend_root_dir: /var/www/magento23os/
     frontend_root_dir: /var/www/storefront/
+    docker_network_mask: 170.20.0.0/24
+    docker_nginx_ip: 170.20.0.2
+    docker_php_ip: 170.20.0.3
+    docker_node_ip: 170.20.0.4
+    docker_mysql_ip: 170.20.0.5
+    docker_redis_ip: 170.20.0.6
 
 
   roles:

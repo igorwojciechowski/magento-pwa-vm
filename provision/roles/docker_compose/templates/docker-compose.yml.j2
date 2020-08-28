@@ -1,4 +1,11 @@
 version: "3.8"
+
+networks:
+  pwa:
+    ipam:
+      config:
+        - subnet: 172.20.0.0/24
+
 services:
   nginx:
     build: "./docker_nginx/"
@@ -8,20 +15,25 @@ services:
     volumes:
       - /var/log/nginx/:/var/log/nginx/
       - {{ backend_root_dir }}:{{ backend_root_dir }}
+    networks:
+      pwa:
+        ipv4_address: {{ docker_nginx_ip }}
   php:
     build: "./docker_php73/"
     volumes:
       - {{ backend_root_dir }}:{{ backend_root_dir }}
-    ports:
-      - 9000:9000
+    networks:
+      pwa:
+        ipv4_address: {{ docker_php_ip }}
   node:
     build: "./docker_node"
-    ports:
-      - 3000:3000
     volumes:
       - {{ frontend_root_dir }}:{{ frontend_root_dir }}
     extra_hosts:
       - "{{ backend_domain }}:{{ ip }}"
+    networks:
+      pwa:
+        ipv4_address: {{ docker_node_ip }}
     stdin_open: true
   mysql:
     build: "./docker_mysql56/"
@@ -34,7 +46,13 @@ services:
       - /var/lib/mysql/data/:/var/lib/mysql/data/
     ports:
       - 3306:3306
+    networks:
+      pwa:
+        ipv4_address: {{ docker_mysql_ip }}
   redis:
     build: "./docker_redis60/"
     ports:
       - 6379:6379
+    networks:
+      pwa:
+        ipv4_address: {{ docker_redis_ip }}

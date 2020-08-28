@@ -1,5 +1,5 @@
 upstream my_nodejs_upstream {
-    server {{ ip }}:3000;
+    server {{ docker_node_ip }}:3000;
     keepalive 64;
 }
 
