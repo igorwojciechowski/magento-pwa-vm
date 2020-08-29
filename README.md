@@ -69,5 +69,4 @@ A docker-based virtual machine for Magento-PWA application.
 
 ## To do
 
-* Add xdebug to PHP container
 * Add Elasticsearch container

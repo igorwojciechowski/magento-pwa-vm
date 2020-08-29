@@ -42,6 +42,9 @@ RUN groupadd --gid {{ group_gid }} {{ user_group }}
 RUN useradd {{ user_name }} --uid {{ user_uid }} -m -g {{ user_group }}
 RUN echo "{{ user_password }}:{{ user_password }}" | chpasswd
 
+RUN pecl install xdebug
+RUN docker-php-ext-enable xdebug
+
 RUN sed -i 's/www-data/magento/g' /usr/local/etc/php-fpm.d/www.conf
 RUN sed -i 's/www-data/magento/g' /usr/local/etc/php-fpm.d/www.conf.default
 
@@ -50,6 +53,6 @@ RUN chmod 0775 /usr/local/etc/php/php.ini
 
 WORKDIR {{ backend_root_dir }}
 
-EXPOSE 9000
+EXPOSE 9000 9001
 
 CMD [ "supervisord", "-n" ]

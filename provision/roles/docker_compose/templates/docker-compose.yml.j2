@@ -26,6 +26,8 @@ services:
     networks:
       default:
         ipv4_address: {{ docker_php_ip }}
+    ports:
+      - 9001:9001
     mem_limit: 4096M
   node:
     build: "./docker_node"
