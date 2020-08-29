@@ -15,7 +15,7 @@
     db_root_password: root
     db_name: magento
     backend_domain: magento.backend
-    frontend_domain: magento.front
+    frontend_domain: magento.frontend
     backend_root_dir: /var/www/magento23os/
     frontend_root_dir: /var/www/storefront/
     docker_network_subnet: 170.20.0.0/24
