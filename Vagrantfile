@@ -7,8 +7,8 @@ Vagrant.configure("2") do |config|
         machine.vm.provider "virtualbox" do |vb|
             vb.name = "magento.local"
             vb.gui = false
-            vb.memory = 4096
-            vb.cpus = 2
+            vb.memory = 8092
+            vb.cpus = 4
         end
         machine.vm.provision :ansible_local do |ansible|
             ansible.verbose = "v"
