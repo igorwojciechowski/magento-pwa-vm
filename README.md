@@ -1,4 +1,4 @@
-# magento-vm-docker
+# magento-pwa-vm
 
 A docker-based virtual machine for Magento-PWA application.
 
@@ -28,11 +28,11 @@ A docker-based virtual machine for Magento-PWA application.
 
     * Clone repository
         ```bash
-        $ git clone https://github.com/igorwojciechowski/magento-vm-docker.git
+        $ git clone https://github.com/igorwojciechowski/magento-pwa-vm.git
         ``` 
-    * Go to repository
+    * Go to repository folder
         ```bash
-        $ cd magento-vm-docker
+        $ cd magento-pwa-vm
         ```
     * Run machine with Vagrant
         ```bash
@@ -59,6 +59,12 @@ A docker-based virtual machine for Magento-PWA application.
     * Run docker-compose
         ```bash
         $ docker-compose up -d --build
+        ```
+4. Update IP-Hosts mappings on host machine
+    * Add to `/etc/hosts` (Linux) or `C://Windows/System32/drivers/etc/hosts` (Windows):
+        ```text
+        192.168.33.10 magento.backend
+        192.168.33.10 magento.frontend
         ```
 
 ## To do
