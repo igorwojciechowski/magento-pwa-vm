@@ -38,7 +38,7 @@ A docker-based virtual machine for Magento-PWA application.
         ```bash
         $ vagrant up
         ```
-2. Clone projects repositories
+2. Setup projects repositories
     * SSH to machine
         ```bash
         $ ssh magento@192.168.33.10
@@ -50,6 +50,10 @@ A docker-based virtual machine for Magento-PWA application.
     * Clone PWA repository
         ```bash
         $ git clone <pwa_repository> /var/www/storefront/
+        ```
+    * Copy `package.json` to docker directory
+        ```bash
+        $ cp <pwa_repository>/package.json ~/docker/docker_node/var/www/storefront/  
         ```
 3. Run docker containers
     * Go to docker directory

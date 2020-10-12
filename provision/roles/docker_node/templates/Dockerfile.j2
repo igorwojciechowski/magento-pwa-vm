@@ -25,9 +25,13 @@ RUN echo "Set disable_coredump false" >> /etc/sudo.conf
 RUN npm i -g graphql-cli \
              pm2
 
-USER {{ user_name }}
-
 WORKDIR {{ frontend_root_dir }}
+
+COPY .{{ frontend_root_dir }}package.json .
+RUN yarn install
+
+RUN chown {{ user_name }}:{{ user_group }} ./node_modules
+USER {{ user_name }}
 
 EXPOSE 3000
 

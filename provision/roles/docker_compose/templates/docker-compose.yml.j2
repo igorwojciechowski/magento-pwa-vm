@@ -33,6 +33,7 @@ services:
     build: "./docker_node"
     volumes:
       - {{ frontend_root_dir }}:{{ frontend_root_dir }}
+      - {{ frontend_root_dir }}/node_modules
     extra_hosts:
       - "{{ backend_domain }}:{{ ip }}"
     networks:
